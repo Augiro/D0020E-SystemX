@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<service>
+<domain>docker.ahf</domain>
+<host>130.240.5.130</host>
+<name>IECnotification</name>
+<port>1883</port>
+<properties>
+<property>
+<name>path</name>
+<value>/notification</value>
+</property>
+</properties>
+<type>mqtt._tcp</type>
+</service>
