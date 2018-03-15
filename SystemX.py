@@ -5,10 +5,11 @@ import sys
 import datetime
 
 file = open("log.txt", "a")
-
+AHHost = "130.240.5.130:8045"
+MQTTHost = "130.240.5.130"
 def arrowHeadGet():
     #print all services registered at Arrowhead promt to msg these.
-    r = requests.get("http://130.240.5.130:8045/servicediscovery/service")
+    r = requests.get("http://"+AHHost+"/servicediscovery/service")
     root = ET.fromstring(r.text)
     print("These are the existing ArrowHead services:")
     for service in root:
@@ -43,7 +44,7 @@ def on_message(client, userdata, msg):
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect("130.240.5.130", 1883, 60)
+client.connect(MQTTHost, 1883, 60)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
